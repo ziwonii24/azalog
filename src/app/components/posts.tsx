@@ -5,7 +5,7 @@ export function BlogPosts() {
   const allBlogs = getBlogPosts();
 
   return (
-    <div>
+    <div className="flex flex-col">
       {allBlogs.map((post) => (
         <Link key={post.slug} href={`/blog/${post.slug}`}>
           {post.metadata.title}

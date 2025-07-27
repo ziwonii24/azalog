@@ -1,5 +1,6 @@
-import Link from "next/link";
 import "./globals.css";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 export default function RootLayout({
   children,
@@ -9,12 +10,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <header>
-          <Link href="/">Home</Link>
-          <Link href="/blog">Blog</Link>
-        </header>
+        <Header />
         {children}
-        <footer>footer</footer>
+        <Footer />
       </body>
     </html>
   );
