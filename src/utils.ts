@@ -1,12 +1,6 @@
 import fs from "fs";
 import path from "path";
-
-type Metadata = {
-  title: string;
-  publishedAt: string;
-  summary: string;
-  image?: string;
-};
+import { IMetadata, IPost } from "./types";
 
 /**
  * fileContent를 파싱해서 { metadata, content } 형태로 반환한다
@@ -19,16 +13,16 @@ function parseFrontmatter(fileContent: string) {
   const frontMatterBlock = match![1];
   const content = fileContent.replace(frontmatterRegex, "").trim();
   const frontMatterLines = frontMatterBlock.trim().split("\n");
-  const metadata: Partial<Metadata> = {};
+  const metadata: Partial<IMetadata> = {};
 
   frontMatterLines.forEach((line) => {
     const [key, ...valueArr] = line.split(": ");
     let value = valueArr.join(": ").trim();
     value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
+    metadata[key.trim() as keyof IMetadata] = value;
   });
 
-  return { metadata: metadata as Metadata, content };
+  return { metadata: metadata as IMetadata, content };
 }
 
 /**
@@ -55,7 +49,7 @@ function readMDXFile(filePath: string) {
  * @param dir
  * @returns
  */
-function getMDXData(dir: string) {
+function getMDXData(dir: string): IPost[] {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = readMDXFile(path.join(dir, file));
@@ -70,9 +64,29 @@ function getMDXData(dir: string) {
 }
 
 /**
- * /src/app/blog/posts 디렉토리에 있는 mdx 블로그 글들을 가져와라
+ * /src/posts 디렉토리에 있는 mdx 글들을 가져와라
  * @returns
  */
-export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "src", "app", "blog", "posts"));
+export function getAllPosts(): IPost[] {
+  return getMDXData(path.join(process.cwd(), "src", "posts"));
+}
+
+/**
+ * @param slug
+ * @returns slug에 해당하는 글을 가져온다
+ */
+export function getPostBySlug(slug: string): IPost | undefined {
+  return getAllPosts().find((post) => post.slug === slug);
+}
+
+/**
+ * @returns 모든 글을 최신 순으로 정렬해서 반환한다
+ */
+export function getAllLatestPosts(): IPost[] {
+  return getAllPosts().sort((a, b) => {
+    return (
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+    );
+  });
 }
