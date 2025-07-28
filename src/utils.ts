@@ -90,3 +90,16 @@ export function getAllLatestPosts(): IPost[] {
     );
   });
 }
+
+/**
+ * @param category
+ * @returns category에 해당하는 모든 글을 최신 순으로 정렬해서 반환한다
+ */
+export function getPostsByCategory(category: string): IPost[] {
+  return getAllLatestPosts().filter((post) => {
+    return post.metadata.categories
+      ?.split(",")
+      .map((c) => c.trim())
+      .includes(category);
+  });
+}

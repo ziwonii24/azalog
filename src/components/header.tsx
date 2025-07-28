@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/assets/logo.png";
+import { CATEGORIES } from "@/types";
 
 export default function Header() {
   return (
@@ -9,11 +10,15 @@ export default function Header() {
         <Image src={Logo} alt="logo" width={100} height={100} />
       </Link>
 
-      {/* TODO: categories, search, github */}
-      {/* <nav className="flex gap-2">
-        <Link href="/">Home</Link>
-        <Link href="/blog">Blog</Link>
-      </nav> */}
+      {/* TODO: search, github */}
+      <nav className="flex gap-2">
+        {Object.keys(CATEGORIES).map((category) => (
+          <Link key={category} href={`/category/${category}`}>
+            {category}
+          </Link>
+          // TODO: sub categories hover menu
+        ))}
+      </nav>
     </header>
   );
 }
