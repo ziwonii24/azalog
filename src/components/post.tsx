@@ -8,7 +8,6 @@ export default function Post({ post }: { post: IPost }) {
       className="border border-black rounded-2xl flex flex-col p-2 w-fit hover:bg-green-50"
     >
       <span>{post.metadata.title}</span>
-      <span>{post.metadata.summary}</span>
       <span className="text-xs">{post.metadata.publishedAt}</span>
     </Link>
   );
