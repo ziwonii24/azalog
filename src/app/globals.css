@@ -11,3 +11,106 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+:root {
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-property: #0550ae;
+  --sh-entity: #249a97;
+  --sh-jsxliterals: #6266d1;
+  --sh-string: #00a99a;
+  --sh-keyword: #f47067;
+  --sh-comment: #a19595;
+}
+
+.custom-mdx {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  word-wrap: break-word;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+    color: #0969da;
+  }
+
+  h1 {
+    padding-bottom: 0.3em;
+    font-size: 2em;
+    border-bottom: 1px solid #d1d9e0b3;
+  }
+  h2 {
+    padding-bottom: 0.3em;
+    font-size: 1.5em;
+    border-bottom: 1px solid #d1d9e0b3;
+  }
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 600;
+    line-height: 1.25;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    margin-block-start: 1em;
+    -webkit-margin-after: 1em;
+    margin-block-end: 1em;
+    -webkit-padding-start: 40px;
+    padding-inline-start: 40px;
+    unicode-bidi: -webkit-isolate;
+    unicode-bidi: -moz-isolate;
+    unicode-bidi: isolate;
+    padding-left: 2em;
+  }
+
+  ul {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    margin-block-start: 1em;
+    -webkit-margin-after: 1em;
+    margin-block-end: 1em;
+    -webkit-padding-start: 40px;
+    padding-inline-start: 40px;
+    unicode-bidi: -webkit-isolate;
+    unicode-bidi: -moz-isolate;
+    unicode-bidi: isolate;
+    padding-left: 2em;
+  }
+
+  pre {
+    padding: 1rem;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    color: #1f2328;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+
+  p code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    white-space: break-spaces;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+  }
+}
