@@ -19,7 +19,7 @@ export default async function Page({
   const posts = getPostsByCategory(category);
 
   return (
-    <section className="flex flex-col gap-4 p-4">
+    <section className="flex flex-col gap-4 p-4 pb-80">
       {posts.map((post) => (
         <Post key={post.slug} post={post} />
       ))}
