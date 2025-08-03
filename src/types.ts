@@ -1,7 +1,7 @@
 export const CATEGORIES = {
   FE: ["React", "JS", "TS", "Next"],
   EXP: ["Pjt", "Book", "Lecture", "Exhibition"],
-  ETC: ["Git", "AI", "Nginx", "Docker", "PM"],
+  ETC: ["Git", "AI", "Nginx", "Docker", "PM", "Algorithm"],
 } as const;
 
 export interface IMetadata {
