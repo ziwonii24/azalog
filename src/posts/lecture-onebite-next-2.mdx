@@ -1,0 +1,39 @@
+---
+title: [강의요약] 한 입 크기로 잘라먹는 Next.js(v15) - 2 (섹션 3)
+publishedAt: 2025-08-03
+categories: EXP,Lecture
+---
+
+# Page Router 페이지 라우터 소개
+
+리액트 라우터처럼 페이지 라우팅 기능을 제공
+
+pages 라는 폴더를 기반으로 동작
+
+next 14 버전으로 예제 진행
+
+### pages
+
+` pages/index.tsx``~/ `
+
+`pages/about/index.tsx` ⇒ `~/about`
+
+`pages/test.tsx` ⇒ `~/test`
+
+`pages/item/[id].tsx` ⇒ `~/item/1, ~/item/2, ... ~/item/100` : 동적 경로(Dynamic Routes)
+
+### \_app.tsx
+
+루트 컴포넌트 역할, 모든 페이지의 부모
+
+Component = page
+
+pageProps = Component(page)의 props
+
+### \_document.tsx
+
+모든 페이지에 공통적으로 적용되는 html(리액트의 index.html과 비슷한 개념)
+
+# 강의링크
+
+[한 입 크기로 잘라먹는 Next.js(v15), 이정환, 인프런](https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%ED%81%AC%EA%B8%B0-nextjs/dashboard)

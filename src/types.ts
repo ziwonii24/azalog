@@ -1,3 +1,4 @@
+// FIXME: A,ZA,LOG
 export const CATEGORIES = {
   FE: ["React", "JS", "TS", "Next"],
   EXP: ["Pjt", "Book", "Lecture", "Exhibition"],

@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: false,
   // basePath: "/azalog",
   // output: "export",
   // assetPrefix:
