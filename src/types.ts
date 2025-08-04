@@ -9,6 +9,7 @@ export interface IMetadata {
   publishedAt: string;
   categories?: string; // seperated by commas
   thumbnail?: string;
+  status: "draft" | "published";
 }
 
 export interface IPost {
