@@ -1,8 +1,7 @@
-// FIXME: A,ZA,LOG
 export const CATEGORIES = {
-  FE: ["React", "JS", "TS", "Next"],
-  EXP: ["Pjt", "Book", "Lecture", "Exhibition"],
-  ETC: ["Git", "AI", "Nginx", "Docker", "PM", "Algorithm"],
+  A: ["React", "JS", "TS", "Next"],
+  ZA: ["Git", "AI", "Nginx", "Docker", "PM", "Algorithm", "OS"],
+  LOG: ["Pjt", "Book"],
 } as const;
 
 export interface IMetadata {
