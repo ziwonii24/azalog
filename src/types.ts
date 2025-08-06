@@ -6,7 +6,7 @@ export const CATEGORIES = {
 
 export interface IMetadata {
   title: string;
-  publishedAt: string;
+  publishedAt: string; // TODO: add draft at ?
   categories?: string; // seperated by commas
   thumbnail?: string;
   status: "draft" | "published";

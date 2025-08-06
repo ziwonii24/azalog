@@ -1,0 +1,28 @@
+---
+title: [Linux] 명령어 한 줄로 파일 내 문자열 수정하기 - sed
+publishedAt: 2025-08-06
+categories: ZA,OS
+status: draft
+---
+
+# 명령어
+
+```
+sed -i 's/aaa/bbb/g' file.js
+```
+
+# 뜻
+
+file.js 안에 있는 aaa를 모두 bbb로 바꿔라
+
+# 응용
+
+```
+sed -i 's!aaa!bbb!g' file.js
+```
+
+기본 구분자인 슬래시(/) 대신 다른 구분자를 사용할 수 있다.
+
+변경 하려는 문구에 슬래시(/)가 이미 들어가 있을 경우 유용하다.
+
+vi 편집기에서 문자열을 수정하는 방식과 매우 유사하다.
