@@ -9,10 +9,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
-        <div className="h-screen">
+      <body className="antialiased">
+        <div className="min-h-screen flex flex-col">
           <Header />
-          {children}
+          <main className="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            {children}
+          </main>
           <Footer />
         </div>
       </body>
