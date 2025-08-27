@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/assets/logo.png";
 import { CATEGORIES } from "@/types";
 
 /**
@@ -17,9 +15,23 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+        <div className="flex items-center h-16">
+          {/* Home Icon */}
+          <div className="flex-shrink-0 mr-6">
+            <Link
+              href="/"
+              className="text-gray-600 hover:text-gray-900 p-2 rounded-md transition-colors duration-200"
+              aria-label="홈으로 이동"
+            >
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Desktop Navigation - Categories next to home icon */}
+          <nav className="hidden md:flex space-x-6 flex-1">
             {Object.keys(CATEGORIES).map((category) => (
               <Link
                 key={category}
@@ -32,7 +44,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile Navigation Button */}
-          <div className="md:hidden">
+          <div className="md:hidden ml-auto">
             <button
               type="button"
               className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-md transition-colors duration-200"
@@ -58,6 +70,12 @@ export default function Header() {
         {/* Mobile Navigation Menu */}
         <div className="md:hidden border-t border-gray-200">
           <nav className="py-2">
+            <Link
+              href="/"
+              className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors duration-200"
+            >
+              홈
+            </Link>
             {Object.keys(CATEGORIES).map((category) => (
               <Link
                 key={category}
