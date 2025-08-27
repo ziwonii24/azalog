@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- SSO에 대하여
+- 자주 사용하는 도커 명령어 정리 (build, push, pull, logs, list, docker compose)
+- Nginx resolver, upstream에 대한 정리
+- Nginx proxy_header 가끔 무시되는 이유
+- 자주 사용하는 ssh, scp 접속 명령어 정리
+  - Unable to negotiate with {ip} port 22: no matching host key type found. Their offer: ssh-rsa,ssh-dss
+    - ssh -o "HostKeyAlgorithms ssh-rsa" {user_name}@{ip}
+  - ssh -i ~/.ssh/{key_name} {user_name}@{ip} -p {port}
+- 자주 사용하는 리눅스 명령어 정리 (sudo su, chmod, tar, cd, ls, cp, mv, rm, mkdir, touch)
+- 자주 사용하는 vi 명령어 정리 (:%s!prev!post!g)
+- react-router-dom ?
