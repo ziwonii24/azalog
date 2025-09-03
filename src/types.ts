@@ -1,14 +1,27 @@
 export const CATEGORIES = {
-  A: ["React", "JS", "TS", "Next"],
-  ZA: ["Git", "AI", "Nginx", "Docker", "PM", "Algorithm", "OS"],
+  // 기술적인 기록
+  AZA: [
+    "React",
+    "JS",
+    "TS",
+    "Next",
+    "Git",
+    "AI",
+    "Nginx",
+    "Docker",
+    "PM",
+    "Algorithm",
+    "OS",
+  ],
+  // 경험적인 기록
   LOG: ["Pjt", "Book"],
 } as const;
 
 export interface IMetadata {
   title: string;
-  publishedAt: string; // TODO: add draft at ?
   categories?: string; // seperated by commas
-  thumbnail?: string;
+  draftAt?: string; // 초본
+  publishedAt?: string; // 완성본
   status: "draft" | "published";
 }
 

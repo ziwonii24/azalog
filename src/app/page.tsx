@@ -1,4 +1,4 @@
-import { getAllLatestPosts } from "@/utils";
+import { getAllLatestPublishedPosts } from "@/utils";
 import Post from "@/components/post";
 
 /**
@@ -6,11 +6,11 @@ import Post from "@/components/post";
  * @returns
  */
 export default function Home() {
-  const allLatestPosts = getAllLatestPosts();
+  const allLatestPublishedPosts = getAllLatestPublishedPosts();
 
   return (
     <section className="flex flex-col gap-4 p-4 pb-80">
-      {allLatestPosts.map((post) => (
+      {allLatestPublishedPosts.map((post) => (
         <Post key={post.slug} post={post} />
       ))}
     </section>

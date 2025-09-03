@@ -19,7 +19,13 @@ function parseFrontmatter(fileContent: string) {
     const [key, ...valueArr] = line.split(": ");
     let value = valueArr.join(": ").trim();
     value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof IMetadata] = value;
+    const trimmedKey = key.trim() as keyof IMetadata;
+    if (trimmedKey === "status") {
+      // Explicitly cast to the union type
+      metadata[trimmedKey] = value as "draft" | "published";
+    } else {
+      metadata[trimmedKey] = value;
+    }
   });
 
   return { metadata: metadata as IMetadata, content };
@@ -82,13 +88,17 @@ export function getPostBySlug(slug: string): IPost | undefined {
 /**
  * @returns 모든 글을 최신 순으로 정렬해서 반환한다
  */
-export function getAllLatestPosts(): IPost[] {
-  return getAllPosts().sort((a, b) => {
-    return (
-      new Date(b.metadata.publishedAt).getTime() -
-      new Date(a.metadata.publishedAt).getTime()
-    );
-  });
+export function getAllLatestPublishedPosts(): IPost[] {
+  return getAllPosts()
+    .filter(
+      (p) => p.metadata.status === "published" && p.metadata.publishedAt != null
+    )
+    .sort((a, b) => {
+      return b.metadata.publishedAt && a.metadata.publishedAt
+        ? new Date(b.metadata.publishedAt).getTime() -
+            new Date(a.metadata.publishedAt).getTime()
+        : 0;
+    });
 }
 
 /**
@@ -96,7 +106,7 @@ export function getAllLatestPosts(): IPost[] {
  * @returns category에 해당하는 모든 글을 최신 순으로 정렬해서 반환한다
  */
 export function getPostsByCategory(category: string): IPost[] {
-  return getAllLatestPosts().filter((post) => {
+  return getAllLatestPublishedPosts().filter((post) => {
     return post.metadata.categories
       ?.split(",")
       .map((c) => c.trim())
