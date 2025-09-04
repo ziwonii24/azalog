@@ -14,13 +14,13 @@ status: draft
 /app/search/page.tsx
 query string은 페이지 라우팅에 영향을 주지 않늗ㄴ다
 page component의 props로 전달됨
-type = Promise<{ q: string }>
+`type = Promise<{ q: string }>`
 async await로 page 컴포넌트가 구성됨
 서버 컴포넌트이기 때문에 비동기적으로 컴포넌트 펑션이 구성되어도 된다
 
 /app/book/[id]/page.tsx
 url parameter르ㅡㄹ 포함하는 동적ㄱ 경로
-Promise<{id: string}>
+`Promise<{id: string}>`
 async await 로 비동기로 가져옴
 
 1/1로 접근하면 404
