@@ -9,7 +9,7 @@ export default function Home() {
   const allLatestPublishedPosts = getAllLatestPublishedPosts();
 
   return (
-    <section className="flex flex-col gap-4 p-4 pb-80">
+    <section className="flex flex-col gap-4 py-4">
       {allLatestPublishedPosts.map((post) => (
         <Post key={post.slug} post={post} />
       ))}
