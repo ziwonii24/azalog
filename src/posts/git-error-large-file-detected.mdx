@@ -1,0 +1,29 @@
+---
+title: error GH001 Large files detected. You may want to try Git Large File Storage 원인과 해결
+categories: AZA,Git
+draftAt: 2025-07-28
+status: draft
+---
+
+어느날 깃헙에 push 했더니 이런 에러가 생겼다.
+
+```
+error: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com
+```
+
+알아보니 깃헙은 용량이 100MB 이하인 파일만 올릴 수 있다.
+한번에 너무 큰 용량의 파일을 push 했더니 생긴 에러였다.
+
+`git lfs`를 이용하면 큰 파일을 별도로 관리해준다.
+
+1. `brew install git-lfs`
+
+2. `git lfs install`
+
+3. `git lfs track` 파일이름
+
+4. `.gitattributes` 라는 파일이 만들어진다
+
+5. `git reset --mixed HEAD^` 큰 파일 커밋했던거 취소하고 다시 푸쉬
+
+6. 다시 커밋하고 푸쉬하면 성공~!

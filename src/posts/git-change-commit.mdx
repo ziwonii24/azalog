@@ -1,0 +1,83 @@
+---
+title: 커밋 메시지 수정하는법 Change commit message
+categories: AZA,Git
+draftAt: 2025-07-28
+status: draft
+---
+
+평소에 모든 프로젝트에서 [Gitmoji](https://gitmoji.dev/)를 활용해서 알아볼 수 있을 정도로만 커밋 메시지를 적고 있다.
+
+어느 날 한 프로젝트에서 [release-please-action](https://github.com/google-github-actions/release-please-action)을 활용할 일이 생겼는데 그러려면 [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) 규칙을 따라야한다는 사실을 알았다.
+
+그래서 이 프로젝트에 대해서만 커밋 메시지 규칙이 달라지게 되었고,
+
+그로인해 넋 놓고 있거나 졸릴때면 자연스럽게 Gitmoji로 커밋메시지를 적고 있는 나 자신을 비일비재하게 만날 수 있다.
+
+습관의 무서움이랄까...
+
+이 프로젝트에 대해서만 Conventional Commit이 습관으로 자리잡으려면 시간이 좀 걸리겠지만
+
+그 전까지 커밋 메시지를 잘못 작성했을때 수정하는 법이라도 습관으로 자리잡길 바라며 글로 정리해보았다.
+
+# 방금 커밋한 메시지 변경하기
+
+```
+git commit --amend
+```
+
+vi편집기로 간단하게 커밋 메시지를 수정할 수 있다.
+
+# 예전에 커밋한 메시지 변경하기
+
+1. 다음 명령어로 마지막 n개의 커밋 목록을 불러온다.
+
+```
+# Displays a list of the last 3 commits on the current branch
+$ git rebase -i HEAD~3
+```
+
+2. 그러면 목록이 편집기에 다음과 같은 형태로 등장한다.
+
+```
+pick e499d89 Delete CNAME
+pick 0c39034 Better README
+pick f7fde4a Change the commit message but push the same commit.
+
+# Rebase 9fdb3bd..f7fde4a onto 9fdb3bd
+#
+# Commands:# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message# x, exec = run command (the rest of the line) using shell#
+# These lines can be re-ordered; they are executed from top to bottom.#
+# If you remove a line here THAT COMMIT WILL BE LOST.#
+# However, if you remove everything, the rebase will be aborted.#
+# Note that empty commits are commented out
+```
+
+3. 변경하려는 커밋 메시지의 앞에 있는 pick을 reword로 바꿔준다.
+
+```
+pick e499d89 Delete CNAME
+reword 0c39034 Better README
+reword f7fde4a Change the commit message but push the same commit.
+```
+
+4. 커밋 목록 편집기를 저장하고 닫는다.
+
+5. 변경하려는 커밋 메시지가 차례대로 등장하는데, 새 커밋 메시지를 입력하고 저장하고 닫는다.
+
+# 이미 Remote Repository에 푸쉬한 커밋 메시지를 수정하는 경우
+
+1. 위에서 말한대로 수정한 후,
+
+2. push --force 명령어를 사용하여 이전 커밋을 강제로 푸쉬한다.
+
+```
+git push --force origin EXAMPLE-BRANCH
+```
+
+# 참조
+
+- [https://docs.github.com/ko/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message](https://docs.github.com/ko/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/changing-a-commit-message)

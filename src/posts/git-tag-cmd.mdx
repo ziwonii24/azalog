@@ -1,0 +1,73 @@
+---
+title: Git Tag 관련 명령어
+categories: AZA,Git
+draftAt: 2025-07-28
+status: draft
+---
+
+태그는 커밋에 표시해두는 거라고 생각하면 된다.
+보통 릴리즈할때 사용한다.
+
+로컬에 존재하는 이미 만들어진 모든 태그 확인
+
+```
+git tag
+```
+
+Lightweight 태그 생성
+
+```
+git tag v1.0
+```
+
+Annotated 태그 생성
+
+```
+git tag -a v1.0 -m "this is tag message"
+```
+
+예전에 만들어뒀던 커밋에 태그 생성
+
+1. 그 커밋으로 체크아웃하고 태그 생성하거나
+
+```
+git checkout 9fceb02
+git tag v1.0
+```
+
+2. 그 커밋 체크섬에 바로 태그 생성 가능
+
+```
+git tag -a v1.0 9fceb02
+```
+
+원격에 push 하기
+`git push` 만으로는 tag가 자동으로 push 되지 않는다.
+직접 그 태그를 명시하면서 push 해야한다.
+
+```
+git push origin v1.0
+```
+
+여러 태그를 한번에 push 할 수도 있다.
+이렇게 하면 원격에 없는 모든 태그를 한번에 전송할 수 있다.
+
+```
+git push origin --tags
+```
+
+태그 삭제
+
+```
+git tag -d v1.0
+```
+
+태그 삭제 후 원격에 적용하기
+
+```
+git push origin :v1.0
+```
+
+# 참조
+
+- [https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%ED%83%9C%EA%B7%B8](https://git-scm.com/book/ko/v2/Git%EC%9D%98-%EA%B8%B0%EC%B4%88-%ED%83%9C%EA%B7%B8)
