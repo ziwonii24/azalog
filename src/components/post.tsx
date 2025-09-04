@@ -2,8 +2,6 @@ import { IPost } from "@/types";
 import Link from "next/link";
 
 /**
- * TODO:
- * 1. random hover color
  * @param param0
  * @returns
  */
@@ -11,20 +9,24 @@ export default function Post({ post }: { post: IPost }) {
   return (
     <Link
       href={`/post/${post.slug}`}
-      className="border border-black rounded-2xl flex flex-col gap-1 p-3 w-full hover:bg-green-50"
+      className="group bg-white border border-gray-200 rounded-xl p-6 w-full transition-all duration-300 hover:shadow-lg hover:border-gray-300 hover:-translate-y-1"
     >
-      <div className="flex gap-1">
+      <div className="flex flex-wrap gap-2 mb-3">
         {post.metadata.categories?.split(",").map((category) => (
           <span
             key={`category-${post.slug}-${category}`}
-            className="border border-black text-xs p-0.5 rounded-lg bg-white"
+            className="inline-flex items-center px-2.5 py-1 text-xs font-medium text-blue-700 bg-blue-50 border border-blue-200 rounded-full"
           >
-            {category}
+            {category.trim()}
           </span>
         ))}
       </div>
-      <span>{post.metadata.title}</span>
-      <span className="text-xs">{post.metadata.publishedAt}</span>
+      <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+        {post.metadata.title}
+      </h3>
+      <time className="text-sm text-gray-500 font-medium">
+        {post.metadata.publishedAt}
+      </time>
     </Link>
   );
 }
