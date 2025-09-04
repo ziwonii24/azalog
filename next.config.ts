@@ -4,8 +4,11 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
-  basePath: isProd ? "/azalog" : "",
   output: "export",
+
+  basePath: isProd ? "/azalog" : "",
+  assetPrefix: isProd ? "/azalog/" : "",
+
   webpack(config) {
     // 기존 svg 처리 로더 제거
     const fileLoaderRule = config.module.rules.find((rule: any) =>
