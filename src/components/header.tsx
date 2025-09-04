@@ -32,7 +32,7 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation - Categories next to home icon */}
-          <nav className="hidden md:flex space-x-6 flex-1">
+          <nav className="hidden md:flex space-x-1 flex-1">
             {Object.keys(CATEGORIES).map((category) => (
               <Link
                 key={category}
