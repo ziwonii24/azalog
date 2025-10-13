@@ -1,16 +1,6 @@
 @import "tailwindcss";
 
-html,
-body {
-  margin: 0px;
-  padding: 0px;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --sh-class: #2d5e9d;
@@ -22,6 +12,18 @@ a {
   --sh-string: #00a99a;
   --sh-keyword: #f47067;
   --sh-comment: #a19595;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .custom-mdx {
