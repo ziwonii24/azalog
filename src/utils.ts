@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import { IMetadata, IPost } from "./types";
+import fs from 'fs';
+import path from 'path';
+import { IMetadata, IPost } from './types';
 
 /**
  * fileContent를 파싱해서 { metadata, content } 형태로 반환한다
@@ -11,18 +11,18 @@ function parseFrontmatter(fileContent: string) {
   const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
   const match = frontmatterRegex.exec(fileContent);
   const frontMatterBlock = match![1];
-  const content = fileContent.replace(frontmatterRegex, "").trim();
-  const frontMatterLines = frontMatterBlock.trim().split("\n");
+  const content = fileContent.replace(frontmatterRegex, '').trim();
+  const frontMatterLines = frontMatterBlock.trim().split('\n');
   const metadata: Partial<IMetadata> = {};
 
   frontMatterLines.forEach((line) => {
-    const [key, ...valueArr] = line.split(": ");
-    let value = valueArr.join(": ").trim();
-    value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
+    const [key, ...valueArr] = line.split(': ');
+    let value = valueArr.join(': ').trim();
+    value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
     const trimmedKey = key.trim() as keyof IMetadata;
-    if (trimmedKey === "status") {
+    if (trimmedKey === 'status') {
       // Explicitly cast to the union type
-      metadata[trimmedKey] = value as "draft" | "published";
+      metadata[trimmedKey] = value as 'draft' | 'published';
     } else {
       metadata[trimmedKey] = value;
     }
@@ -37,7 +37,7 @@ function parseFrontmatter(fileContent: string) {
  * @returns
  */
 function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
+  return fs.readdirSync(dir).filter((file) => path.extname(file) === '.mdx');
 }
 
 /**
@@ -46,7 +46,7 @@ function getMDXFiles(dir: string) {
  * @returns
  */
 function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, "utf-8");
+  const rawContent = fs.readFileSync(filePath, 'utf-8');
   return parseFrontmatter(rawContent);
 }
 
@@ -74,7 +74,7 @@ function getMDXData(dir: string): IPost[] {
  * @returns
  */
 export function getAllPosts(): IPost[] {
-  return getMDXData(path.join(process.cwd(), "src", "posts"));
+  return getMDXData(path.join(process.cwd(), 'src', 'posts'));
 }
 
 /**
@@ -91,7 +91,8 @@ export function getPostBySlug(slug: string): IPost | undefined {
 export function getAllLatestPublishedPosts(): IPost[] {
   return getAllPosts()
     .filter(
-      (p) => p.metadata.status === "published" && p.metadata.publishedAt != null
+      (p) =>
+        p.metadata.status === 'published' && p.metadata.publishedAt != null,
     )
     .sort((a, b) => {
       return b.metadata.publishedAt && a.metadata.publishedAt
@@ -108,7 +109,7 @@ export function getAllLatestPublishedPosts(): IPost[] {
 export function getPostsByCategory(category: string): IPost[] {
   return getAllLatestPublishedPosts().filter((post) => {
     return post.metadata.categories
-      ?.split(",")
+      ?.split(',')
       .map((c) => c.trim())
       .includes(category);
   });

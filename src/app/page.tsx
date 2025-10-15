@@ -1,5 +1,5 @@
-import { getAllLatestPublishedPosts } from "@/utils";
-import Post from "@/components/post";
+import { getAllLatestPublishedPosts } from '@/utils';
+import Post from '@/components/post';
 
 /**
  * Home - 모든 글 최신 순으로 보여주는 페이지
