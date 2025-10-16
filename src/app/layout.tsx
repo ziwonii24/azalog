@@ -11,9 +11,9 @@ export default function RootLayout({
   return (
     <html lang="ko" className="dark">
       <body className="antialiased">
-        <div className="flex min-h-screen flex-col bg-white text-gray-900 transition-colors duration-200 dark:bg-gray-900 dark:text-gray-100">
+        <div className="flex min-h-screen flex-col bg-white transition-colors duration-200 dark:bg-gray-900">
           <Header />
-          <main className="container mx-auto flex-1 bg-white px-4 py-6 sm:px-6 lg:px-8 dark:bg-gray-900">
+          <main className="container mx-auto flex-1 px-4 py-6 sm:px-6 lg:px-8">
             {children}
           </main>
           <Footer />

@@ -1,60 +1,57 @@
-import Link from "next/link";
-import { CATEGORIES } from "@/types";
+import Link from 'next/link';
+import { CATEGORIES } from '@/types';
 
-import HomeIcon from "@/assets/home.svg";
-import HamburgerIcon from "@/assets/hamburger.svg";
-import ThemeToggleButton from "./theme-toggle-button";
+import HomeIcon from '@/assets/home.svg';
+import HamburgerIcon from '@/assets/hamburger.svg';
+import ThemeToggleButton from './theme-toggle-button';
 
 /**
  * TODO:
  * 1. Static Image (& Crop)
  * 2. Search bar
- * 3. Responsive design ✓
  * 4. GitHub link
  * 5. Subcategories hover menu
- * 6. Theme toggle
  * @returns
  */
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white shadow-sm transition-colors duration-200 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center h-16">
+        <div className="flex h-16 items-center">
           {/* Home Icon */}
-          <div className="flex-shrink-0 mr-6">
-            <Link
-              href="/"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white p-2 rounded-md transition-colors duration-200"
-              aria-label="홈으로 이동"
-            >
-              <HomeIcon className="h-6 w-6" />
+          <div className="mr-6 flex-shrink-0">
+            <Link href="/" className="p-2" aria-label="홈으로 이동">
+              <HomeIcon className="h-6 w-6 transition-colors duration-200 dark:text-gray-100" />
             </Link>
           </div>
 
           {/* Desktop Navigation - Categories next to home icon */}
-          <nav className="hidden md:flex space-x-1 flex-1">
+          <nav className="hidden flex-1 space-x-1 md:flex">
             {Object.keys(CATEGORIES).map((category) => (
               <Link
                 key={category}
                 href={`/category/${category}`}
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white px-3 py-2 text-sm font-medium transition-colors duration-200"
+                className="rounded-md px-3 py-1 hover:bg-gray-100"
               >
-                {category}
+                <span className="text-sm font-bold text-gray-900 transition-colors duration-200 dark:text-gray-100">
+                  {category}
+                </span>
               </Link>
             ))}
           </nav>
 
           {/* Desktop Right Side - Dark Mode Toggle */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden items-center md:flex">
             <ThemeToggleButton />
           </div>
 
           {/* Mobile Right Side - Menu Button and Dark Mode Toggle */}
-          <div className="md:hidden ml-auto flex items-center space-x-2">
+          <div className="ml-auto flex items-center space-x-2 md:hidden">
             <ThemeToggleButton />
+            {/* TODO: toggle */}
             <button
               type="button"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md transition-colors duration-200"
+              className="cursor-pointer rounded-md p-2 text-gray-900 transition-colors duration-200 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
               aria-label="메뉴 열기"
             >
               <HamburgerIcon className="h-6 w-6" />
@@ -63,21 +60,17 @@ export default function Header() {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
+        <div className="border-t border-gray-200 transition-colors duration-200 md:hidden dark:border-gray-700">
           <nav className="py-2">
-            <Link
-              href="/"
-              className="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
-            >
-              Home
-            </Link>
             {Object.keys(CATEGORIES).map((category) => (
               <Link
                 key={category}
                 href={`/category/${category}`}
-                className="block px-3 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
+                className="block rounded-md px-3 py-2 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
-                {category}
+                <span className="text-sm font-bold text-gray-600 transition-colors duration-200 dark:text-gray-100">
+                  {category}
+                </span>
               </Link>
             ))}
           </nav>
