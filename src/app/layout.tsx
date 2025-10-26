@@ -10,6 +10,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="dark">
+      <head>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q9C3KR0GMK"
+        />
+        <script>
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-Q9C3KR0GMK');`}
+        </script>
+      </head>
       <body className="antialiased">
         <div className="flex min-h-screen flex-col bg-white transition-colors duration-200 dark:bg-gray-900">
           <Header />
